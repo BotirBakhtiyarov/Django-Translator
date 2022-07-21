@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Translator</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Semantic-UI/semantic.min.css' %}">
+  </head>
+  <body>
+    <div class="ui raised segment">
+      <div class="ui container">
+        <h1 class="ui header">Online dictionary</h1>
+        <div class="ui divider"></div>
+        <p>Easy,     Comfortable,     Self-developer</p>
+      </div>
+      <div class="ui container">
+        <div class="ui placeholder segment">
+          <div class="ui icon header">
+            Chinese - English
+          </div>
+          <div class="inline" style="width: 90%;">
+            <div class="ui massive form search">
+              <form method="GET" action="/" class="ui icon input" style="width:100%;">
+                <input name="q" type="prompt" value="{{q}}"  placeholder="Enter your word...">
+                <i class="search link icon"></i>
+              </form>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div class="ui piled segment">
+        <h4 class="ui header">Result</h4>
+        <table class="ui celled large red table">
+          <thead>
+            <tr>
+              <th><i class="china flag"></i>Chinese</th>
+              <th><i class="united kingdom flag"></i>English</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if result %}
+            {% for data in result%}
+            <tr>
+              <td>{{data.chinese}}</td>
+              <td>{{data.english}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </body>
+</html>
